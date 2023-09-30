@@ -1,4 +1,5 @@
-from bottle import route, run
+from bottle import route, run, template
+
 
 @route('/welcome')
 def welcome():
@@ -10,5 +11,9 @@ def welcome():
 def home():
     return "Homepage"
 
+@route('/developer/<username>')
+def greetDeveloper(username='gadiradufasha'):
+    result = template('Hi {{username}}, Waguan?', username=username)
+    return result
 
 run(host='localhost', port=8080, debug=True)
